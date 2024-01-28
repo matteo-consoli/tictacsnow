@@ -72,7 +72,9 @@ LS @CONTAINER_HOL_DB.PUBLIC.SPECS;
 ```
 3. Create Service
 ```sql
-#DROP SERVICE IF EXISTS CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service;
+-- Drop command in case you are creating the service again
+-- DROP SERVICE IF EXISTS CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service;
+
 CREATE SERVICE CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service
     in compute pool CONTAINER_HOL_POOL
     from @specs
@@ -80,10 +82,11 @@ CREATE SERVICE CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service
 ```
 4. Check the Service status. It might take a few minutes before the status "READY".
 ```sql
-# Check Status
+-- Check Status
 CALL SYSTEM$GET_SERVICE_STATUS('CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service');
+-- Once ready you'll have the status "READY", message "RUNNING"
 
-# Check Logs
+-- Check Logs
 SELECT SYSTEM$GET_SERVICE_LOGS('CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service', 0, 'tic-tac-toe', 50);
 ```
 5. Check the Service Endpoint assigned. It might take a few minutes before an endpoint is available. Once available copy it and paste it in a new window (not logged in).
@@ -92,7 +95,9 @@ SHOW ENDPOINTS IN SERVICE tic_tac_toe_service;
 ```
 6. Create a new user and role and use it in a new window to access your TicTacSnow instance! 
 ```sql
-# In the command below, change the user and password. To access the SPCS service after the login, the user must have as DEFAULT_ROLE CONTAINER_USER_ROLE
+-- Create your own user and password. 
+-- The user accessing TicTacSnow must have CONTAINER_USER_ROLE as default role.
+
 CREATE USER TICTACSNOWPLAYER IDENTIFIED BY 'tictacsnow2024' DEFAULT_ROLE = 'CONTAINER_USER_ROLE';
 GRANT ROLE CONTAINER_USER_ROLE to USER MY_GUEST;
 ```
