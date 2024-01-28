@@ -76,12 +76,12 @@ LS @CONTAINER_HOL_DB.PUBLIC.SPECS;
 CREATE SERVICE CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service
     in compute pool CONTAINER_HOL_POOL
     from @specs
-    spec='tic-tac-toe-spcs.yaml’;
+    spec='tic-tac-toe-spcs.yaml';
 ```
 4. Check the Service status. It might take a few minutes before the status "READY".
 ```sql
 # Check Status
-CALL SYSTEM$GET_SERVICE_STATUS('CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service’);
+CALL SYSTEM$GET_SERVICE_STATUS('CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service');
 
 # Check Logs
 SELECT SYSTEM$GET_SERVICE_LOGS('CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service', 0, 'tic-tac-toe', 50);
