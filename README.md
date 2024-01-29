@@ -37,7 +37,7 @@ cd app
 docker build -t tic-tac-toe .
 ```
 
-3. Login to the Snowflake Container Registry:
+3. Login to the Snowflake Container Registry. Your _<snowflake_registry_hostname>_ is _<orgname>-<acctname>.registry.snowflakecomputing.com_ .
 
 ```bash
 docker login <snowflake_registry_hostname> -u <username>
@@ -64,7 +64,7 @@ docker push <snowflake_registry_hostname>/container_hol_db/public/image_repo/tic
 
 ## Snowflake Deployment 
 
-1. Load Yaml on stage CONTAINER_HOL_DB.PUBLIC.SPECS 
+1. Load Yaml on stage CONTAINER_HOL_DB.PUBLIC.SPECS. Before uploading it, don’t forget to replace <snowflake_registry_hostname> with the appropriate values for your project.
 2. Check the Loaded File via SQL command: 
 ```sql
 USE ROLE CONTAINER_USER_ROLE;
