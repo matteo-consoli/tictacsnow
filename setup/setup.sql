@@ -25,16 +25,19 @@ CREATE STAGE IF NOT EXISTS specs
 ENCRYPTION = (TYPE='SNOWFLAKE_SSE');
 
 USE ROLE ACCOUNTADMIN;
+-- The OAuth security integration will allow us to login to our UI-based services using our web browser and Snowflake credentials
 CREATE SECURITY INTEGRATION IF NOT EXISTS snowservices_ingress_oauth
   TYPE=oauth
   OAUTH_CLIENT=snowservices_ingress
   ENABLED=true;
 
 USE ROLE CONTAINER_USER_ROLE;
+-- The compute pool is the set of compute resources on which our services will run
 CREATE COMPUTE POOL IF NOT EXISTS CONTAINER_HOL_POOL
 MIN_NODES = 1
 MAX_NODES = 1
 INSTANCE_FAMILY = standard_1;
 
+-- The image repository is the location in Snowflake where we will push our Docker images so that our services can use them
 CREATE IMAGE REPOSITORY CONTAINER_HOL_DB.PUBLIC.IMAGE_REPO;
 SHOW IMAGE REPOSITORIES IN SCHEMA CONTAINER_HOL_DB.PUBLIC;
