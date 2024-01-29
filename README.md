@@ -64,13 +64,15 @@ docker push <snowflake_registry_hostname>/container_hol_db/public/image_repo/tic
 
 ## Snowflake Deployment 
 
-1. Load Yaml on stage CONTAINER_HOL_DB.PUBLIC.SPECS. Before uploading it, don’t forget to replace <snowflake_registry_hostname> with the appropriate values for your project.
-2. Check the Loaded File via SQL command: 
+1. Load Yaml on stage CONTAINER_HOL_DB.PUBLIC.SPECS.
+
+   Before uploading it, don’t forget to replace <snowflake_registry_hostname> with the value of your account: <your_org-your_account>.registry.snowflakecomputing.com
+3. Check the Loaded File via SQL command: 
 ```sql
 USE ROLE CONTAINER_USER_ROLE;
 LS @CONTAINER_HOL_DB.PUBLIC.SPECS;
 ```
-3. Create Service
+3. Create the new service: tic_tac_toe_service
 ```sql
 -- Drop command in case you are creating the service again
 -- DROP SERVICE IF EXISTS CONTAINER_HOL_DB.PUBLIC.tic_tac_toe_service;
