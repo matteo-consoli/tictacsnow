@@ -101,7 +101,7 @@ SHOW ENDPOINTS IN SERVICE tic_tac_toe_service;
 -- The user accessing TicTacSnow must have CONTAINER_USER_ROLE as default role.
 
 CREATE USER TICTACSNOWPLAYER IDENTIFIED BY 'tictacsnow2024' DEFAULT_ROLE = 'CONTAINER_USER_ROLE';
-GRANT ROLE CONTAINER_USER_ROLE to USER MY_GUEST;
+GRANT ROLE CONTAINER_USER_ROLE to USER TICTACSNOWPLAYER;
 ```
 7. Login with the new credentials created and have fun!
    
